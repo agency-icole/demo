@@ -1,6 +1,17 @@
-image: maven:latest
+image: agencyicole/builder:latest
+
+variables:
+  MAVEN_OPTS: "-Djava.awt.headless=true -Dmaven.repo.local=./.m2/repository"
+
+stages:
+  - build
+  - test
+  - deploy
 
 build:
   stage: build
   script:
     - mvn package
+
+deploy:
+  stage: deploy
