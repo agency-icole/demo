@@ -1,7 +1,7 @@
 image: agencyicole/builder:1.0.0
 
 variables:
-  MAVEN_OPTS: "-Djava.awt.headless=true -Dmaven.repo.local=./.m2/repository"
+  MAVEN_OPTS: "-Djava.awt.headless=true -Dmaven.repo.local=/.m2/"
 
 stages:
   - build
@@ -11,7 +11,7 @@ stages:
 build:
   stage: build
   script:
-    - mvn package
+    - "mvn -Dmaven.test.skip=true package"
 
 package:
   stage: package
