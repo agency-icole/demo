@@ -12,6 +12,10 @@ build:
   stage: build
   script:
     - "mvn -Dmaven.test.skip=true package"
+  artifacts:
+    paths:
+      - target/classes
+      - target/lib
 
 package:
   stage: package
