@@ -6,12 +6,12 @@ variables:
 stages:
   - build
   - test
-  - deploy
+  - package
 
 build:
   stage: build
   script:
     - mvn package
 
-deploy:
-  stage: deploy
+package:
+  stage: package
