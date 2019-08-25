@@ -15,3 +15,5 @@ build:
 
 package:
   stage: package
+  script:
+    - "docker build . -t demo:latest"
