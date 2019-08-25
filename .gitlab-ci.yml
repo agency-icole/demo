@@ -1,4 +1,4 @@
-image: agencyicole/builder:latest
+image: agencyicole/builder:1.0.0
 
 variables:
   MAVEN_OPTS: "-Djava.awt.headless=true -Dmaven.repo.local=./.m2/repository"
