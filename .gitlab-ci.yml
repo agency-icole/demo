@@ -1,6 +1,23 @@
-image: maven:latest
+image: agencyicole/builder:1.0.0
+
+variables:
+  MAVEN_OPTS: "-Djava.awt.headless=true -Dmaven.repo.local=/.m2/"
+
+stages:
+  - build
+  - test
+  - package
 
 build:
   stage: build
   script:
-    - mvn package
+    - "mvn -Dmaven.test.skip=true package"
+  artifacts:
+    paths:
+      - target/classes
+      - target/lib
+
+package:
+  stage: package
+  script:
+    - "docker build . -t demo:latest"
