@@ -1,4 +1,4 @@
-FROM agencyicole/runtime:1.0.1
+FROM agencyicole/runtime:1.1
 
 COPY target/classes /app
 COPY target/lib /app/lib
