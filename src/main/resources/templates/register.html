@@ -1,0 +1,48 @@
+<section id="register" xmlns:th="http://www.thymeleaf.org">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2>Registration</h2>
+                <p class="lead">Please register your application using the following form.</p>
+                <p>Please note that the data that you are providing is only stored in the memory of the application
+                    and is not transferred to anybody else.</p>
+            </div>
+        </div>
+        <div class="row" th:if="${error != null}">
+            <div class="col-lg-8 mx-auto">
+                <div class="alert alert-danger" role="alert">
+                    [[${error}]]
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-8 mx-auto">
+                <form class="form-horizontal" action='/register' method="POST" th:object="${registrationForm}">
+                    <div class="control-group">
+                        <!-- Username -->
+                        <label class="control-label" for="name">Full Name</label>
+                        <div class="controls">
+                            <input type="text" id="name" name="name" placeholder="" class="input-xlarge" th:field="*{name}">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- E-mail -->
+                        <label class="control-label" for="email">E-mail</label>
+                        <div class="controls">
+                            <input type="text" id="email" name="email" placeholder="" class="input-xlarge" th:field="*{email}">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            <button class="btn btn-success">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
