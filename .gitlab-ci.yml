@@ -24,7 +24,7 @@ package:
     - "docker build . -t demo:latest"
 
 publish:
-  stage: build
+  stage: publish
   script:
     - "docker tag demo:latest agencyicole/demo:$CI_COMMIT_TAG"
     - "docker push agencyicole/demo:$CI_COMMIT_TAG"
