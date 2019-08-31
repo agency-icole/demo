@@ -7,6 +7,7 @@ stages:
   - build
   - test
   - package
+  - publish
 
 build:
   stage: build
@@ -21,3 +22,11 @@ package:
   stage: package
   script:
     - "docker build . -t demo:latest"
+
+publish:
+  stage: build
+  script:
+    - "docker tag demo:latest agencyicole/demo:$CI_COMMIT_TAG"
+    - "docker push agencyicole/demo:$CI_COMMIT_TAG"
+  only:
+    - tags
