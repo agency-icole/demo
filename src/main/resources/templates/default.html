@@ -23,12 +23,14 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">CI/CD Demo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand js-scroll-trigger" href="/#page-top">CI/CD Demo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
+            <ul th:if="${registered}" class="navbar-nav ml-auto">
+
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#about">About</a>
                 </li>
@@ -39,6 +41,10 @@
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
             </ul>
+            <ul class="navbar-nav ml-auto" th:if="${not registered}">
+
+                <b style="color:red">Unregistered version!</b>
+            </ul>
         </div>
     </div>
 </nav>
@@ -46,7 +52,13 @@
 <header class="bg-primary text-white">
     <div class="container text-center">
         <h1>Welcome to CI/CD Demo Application</h1>
+        <span th:if="${not registered}">
         <p class="lead">You are running unregistered version!</p>
+            </span>
+        <span th:if="${registered}">
+        <p class="lead">This is a demo application that shows the power of CI/CD philosophy!</p>
+            </span>
+
     </div>
 </header>
 
@@ -54,9 +66,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
+        <span th:if="${registered}">
+                <h2>Congratulations!</h2>
+                <p class="lead">You are running registered version of the application!</p>
+        </span>
+                <span th:if="${not registered}">
+
                 <h2>Please register your Application!</h2>
                 <p class="lead">Take a moment and register. It's free.</p>
                 <p><a href="/register">Register Now></a></p>
+         </span>
             </div>
         </div>
     </div>

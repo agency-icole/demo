@@ -1,5 +1,6 @@
 package com.example.demo.web;
 
+import com.example.demo.service.RegisterService;
 import io.micrometer.core.annotation.Timed;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
@@ -16,6 +17,9 @@ public class WebController {
     @Autowired
     MeterRegistry meterRegistry;
 
+    @Autowired
+    RegisterService registerService;
+
     @RequestMapping("/")
     @Timed
     public String index(){
@@ -25,6 +29,12 @@ public class WebController {
         timer.record(()->{
 
         });
+        return "default";
+    }
+    @RequestMapping("/register")
+    @Timed
+    public String register(){
+        registerService.register();
         return "default";
     }
 }
