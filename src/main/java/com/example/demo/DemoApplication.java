@@ -18,21 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 @RestController
-@EnableWebMvc
 public class DemoApplication {
-
-    @Autowired
-    MeterRegistry meterRegistry;
-
-    @RequestMapping("/")
-    @Timed
-    public String index(){
-        Timer timer = Timer.builder("demo_rest")
-                .tag("special","test")
-                .register(meterRegistry);
-        timer.record(100, TimeUnit.MILLISECONDS);
-        return "greet";
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
